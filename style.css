@@ -2,6 +2,10 @@
    GLOBAL STYLES
 ========================= */
 
+:root {
+  --nav-height: 80px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -10,11 +14,16 @@
   scroll-behavior: smooth;
 }
 
+html{
+  scroll-padding-top: var(--nav-height);
+}
+
 body {
   background: #0f0f0f;
   color: #ffffff;
   line-height: 1.6;
 }
+
 
 /* =========================
    NAVBAR
@@ -24,12 +33,13 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
+  height: var(--nav-height);
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 3rem;
+  padding: 0 3rem;
   z-index: 1000;
 }
 
@@ -55,6 +65,7 @@ body {
   color: #00f7ff;
 }
 
+
 /* =========================
    HERO SECTION
 ========================= */
@@ -65,27 +76,61 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
   padding: 0 2rem;
 }
 
-.hero-content {
-  margin-top: 80px; /* prevent navbar overlap */
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  max-width: 1100px;
+  width: 100%;
+  margin-top: var(--nav-height);
 }
 
-.hero h1 {
+.hero-text {
+  flex: 1;
+}
+
+.hero-text h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
 }
 
-.hero span {
+.hero-text span {
   color: #00f7ff;
 }
 
-.hero p {
+.hero-text p {
   font-size: 1.2rem;
   opacity: 0.9;
 }
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid #00f7ff;
+  box-shadow: 0 0 30px rgba(0, 247, 255, 0.4);
+  transition: 0.3s ease;
+}
+
+.hero-image img:hover {
+  transform: scale(1.05);
+}
+
+
+/* =========================
+   BUTTON
+========================= */
 
 .btn {
   display: inline-block;
@@ -103,6 +148,7 @@ body {
   transform: scale(1.1);
 }
 
+
 /* =========================
    SECTIONS
 ========================= */
@@ -110,6 +156,7 @@ body {
 .section {
   padding: 6rem 3rem;
   text-align: center;
+  scroll-margin-top: var(--nav-height);
 }
 
 .dark {
@@ -128,6 +175,7 @@ body {
   opacity: 0.85;
   font-size: 1.1rem;
 }
+
 
 /* =========================
    SKILLS
@@ -153,6 +201,7 @@ body {
   color: #000;
   transform: translateY(-10px);
 }
+
 
 /* =========================
    PROJECTS
@@ -207,6 +256,7 @@ body {
   background: #ffffff;
 }
 
+
 /* =========================
    CONTACT
 ========================= */
@@ -260,6 +310,7 @@ button:hover {
   color: #ffffff;
 }
 
+
 /* =========================
    FOOTER
 ========================= */
@@ -271,6 +322,7 @@ footer {
   text-align: center;
 }
 
+
 /* =========================
    RESPONSIVE DESIGN
 ========================= */
@@ -278,15 +330,26 @@ footer {
 @media (max-width: 768px) {
 
   .navbar {
-    padding: 1rem 1.5rem;
+    padding: 0 1.5rem;
   }
 
   .navbar ul {
     gap: 1rem;
   }
 
-  .hero h1 {
+  .hero-container {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .hero-text h1 {
     font-size: 2.2rem;
+  }
+
+  .hero-image img {
+    width: 220px;
+    height: 220px;
   }
 
   .section {
@@ -303,76 +366,5 @@ footer {
 
   .project-links {
     justify-content: center;
-  }
-}
-/* HERO CONTAINER */
-
-.hero {
-  height: 100vh;
-  background: linear-gradient(135deg, #1f1c2c, #928dab);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 2rem;
-}
-
-.hero-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 4rem;
-  max-width: 1100px;
-  width: 100%;
-  margin-top: 80px;
-}
-
-.hero-text {
-  flex: 1;
-}
-
-.hero-text h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.hero-text span {
-  color: #00f7ff;
-}
-
-.hero-image {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-.hero-image img {
-  width: 300px;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 5px solid #00f7ff;
-  box-shadow: 0 0 30px rgba(0, 247, 255, 0.4);
-  transition: 0.3s ease;
-}
-
-.hero-image img:hover {
-  transform: scale(1.05);
-}
-
-@media (max-width: 768px) {
-
-  .hero-container {
-    flex-direction: column-reverse;
-    text-align: center;
-    gap: 2rem;
-  }
-
-  .hero-text h1 {
-    font-size: 2.2rem;
-  }
-
-  .hero-image img {
-    width: 220px;
-    height: 220px;
   }
 }
